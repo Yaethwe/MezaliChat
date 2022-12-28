@@ -49,7 +49,19 @@
         </div>
     </div>
     <div class="container" style="min-width: 18rem;min-height: 18rem;" id="chat-div">
-
+        <div>
+            <nav class="navbar navbar-dark bg-primary">
+                <h1 class="text-white" >Mezali Web Chat</h1>
+                <label class="text-white" id="email-user"></label>
+                <button id="logout-btn" class="btn btn-secondary">Log Out</button>
+            </nav>
+        </div>
+        <div class="msg-container input-group mb-3">
+            <input id="message-input" type="text" class="form-control" placeholder="enter your message" aria-label="message input" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button id="send-btn" class="btn btn-outline-secondary" type="button">Send</button>
+            </div>
+        </div>
     </div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>

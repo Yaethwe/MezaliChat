@@ -16,6 +16,9 @@ const db = firebase.database().ref();
 
 const au = firebase.auth();
 
+//GoogleAuthProvider
+var GAP = new firebase.auth.GoogleAuthProvider();
+
 let user;
 
 const login = (email, password, func) => {
@@ -62,9 +65,17 @@ const logout = () => {
 const auCheck = (func) => {
     au.onAuthStateChanged(u=>{
         if(u){
-            func(true)
+            func(true, u)
         }else{
             func(false)
         }
     })
+}
+
+function amPm(h) {
+    if (h>12) {
+        return "PM"
+    }else{
+        return "AM"
+    }
 }

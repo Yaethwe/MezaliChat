@@ -16,3 +16,14 @@ body{
 #chat-div{
     background-color: aliceblue;
 }
+
+.msg-container{
+    position: fixed;
+    bottom:0px;
+    left:0px;
+    padding:2px;
+}
+
+.flex{
+    display: flex;
+}
