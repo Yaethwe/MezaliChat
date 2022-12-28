@@ -79,6 +79,7 @@ document.getElementById("send-btn").addEventListener("click", function() {
 });
 
 db.child("messages").on("child_added", function(snapshot) {
+    console.log(snapshot.getRef().getKey())
     // Get the message from the snapshot
     const div = document.createElement('div')
     div.className = "alert alert-primary"
