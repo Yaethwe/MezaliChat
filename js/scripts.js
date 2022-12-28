@@ -48,10 +48,12 @@ auCheck((c,d)=>{
         $('#signup-div').hide()
         $('#chat-div').show() 
         $('#email-user').html(userdb.email)
+        $("#private-contents").show()
     }else{
         $('#login-div').show()
         $('#signup-div').hide()
         $('#chat-div').hide()
+        $("#private-contents").hide()
     }
 })
 
