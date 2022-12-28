@@ -6,6 +6,7 @@ let userdb= {
 $('#login-div').show()
 $('#signup-div').hide()
 $('#chat-div').hide()
+$("#private-contents").hide()
 
 $('#login-btn').click(()=>{
     login($('#email-login').val(), $('#pwd-login').val(), f=>{
@@ -38,6 +39,7 @@ $('#signup-link').click(()=>{
 
 $("#logout-btn").click(()=>{
     $('#login-link').click()
+    $("#private-contents").hide()
     logout()
 })
 
