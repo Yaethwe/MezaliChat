@@ -7,12 +7,14 @@ $('#login-div').show()
 $('#signup-div').hide()
 $('#chat-div').hide()
 $("#private-contents").hide()
+$("#chat-msg-div").hide()
 
 $('#login-btn').click(()=>{
     login($('#email-login').val(), $('#pwd-login').val(), f=>{
         $('#login-div').hide()
         $('#signup-div').hide()
         $('#chat-div').show()
+        $("#chat-msg-div").show()
     })
 })
 
@@ -21,11 +23,13 @@ $('#signup-btn').click(()=>{
         $('#login-div').hide()
         $('#signup-div').hide()
         $('#chat-div').show() 
+        $("#chat-msg-div").show()
     })
 })
 
 $('#login-link').click(()=>{
     $('#login-div').show()
+    $("#chat-msg-div").hide()
     $('#signup-div').hide()
     $('#chat-div').hide()
 })
@@ -35,11 +39,13 @@ $('#signup-link').click(()=>{
     $('#login-div').hide()
     $('#signup-div').show()
     $('#chat-div').hide()
+    $("#chat-msg-div").hide()
 })
 
 $("#logout-btn").click(()=>{
     $('#login-link').click()
     $("#private-contents").hide()
+    $("#chat-msg-div").hide()
     logout()
 })
 
@@ -48,11 +54,13 @@ auCheck((c,d)=>{
         userdb=d
         $('#login-div').hide()
         $('#signup-div').hide()
-        $('#chat-div').show() 
+        $('#chat-div').show()
+        $("#chat-msg-div").show()
         $('#email-user').html(userdb.email)
         $("#private-contents").show()
     }else{
         $('#login-div').show()
+        $("#chat-msg-div").hide()
         $('#signup-div').hide()
         $('#chat-div').hide()
         $("#private-contents").hide()
@@ -83,6 +91,19 @@ document.getElementById("send-btn").addEventListener("click", function() {
 });
 
 db.child("messages").on("child_added", function(snapshot) {
+    createMsg(snapshot)
+    scrollTo(0, document.body.scrollHeight);
+});
+db.child("messages").on("child_removed", function(snapshot) {
+    createMsg(snapshot)
+    scrollTo(0, document.body.scrollHeight);
+});
+db.child("messages").on("child_changed", function(snapshot) {
+    createMsg(snapshot)
+    scrollTo(0, document.body.scrollHeight);
+});
+
+function createMsg(snapshot){
     console.log(snapshot.getRef().getKey())
     // Get the message from the snapshot
     const div = document.createElement('div')
@@ -114,4 +135,4 @@ db.child("messages").on("child_added", function(snapshot) {
     div.appendChild(content)
     // Add the message to the chat window
     document.getElementById("chat-div").appendChild(div);
-});
+}

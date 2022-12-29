@@ -79,3 +79,23 @@ function amPm(h) {
         return "AM"
     }
 }
+
+
+
+
+
+
+
+
+
+
+let turn = false;
+$('.navbar-toggler').click(()=>{
+    if(turn){
+        $('.navbarHeader').hide()
+        turn = false
+    }else{
+        $('.navbarHeader').show()
+        turn = true
+    }
+})

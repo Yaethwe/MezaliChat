@@ -14,15 +14,15 @@ body{
     background-color: aliceblue;
 }
 #chat-div{
-    margin-top: 100px;
     background-color: aliceblue;
+    padding-bottom: 50px;
 }
 
 .msg-container{
     position: fixed;
     bottom:0px;
     left:0px;
-    padding:2px;
+    padding:10px;
 }
 
 .flex{
@@ -30,9 +30,6 @@ body{
 }
 
 #navbar{
-    position: fixed;
-    top:0px;
-    left:0px;
-    padding:2px;
-    display: flex;
+    font-family: sans-serif;
+    min-width:100vw;
 }
