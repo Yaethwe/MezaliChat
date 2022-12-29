@@ -11,8 +11,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-
-const db = firebase.database().ref();
+const date1 = new Date()
+const db = firebase.database().ref(`messages/${date1.getFullYear()}/${date1.getMonth()+1}/${date1.getDate()}`);
 
 const au = firebase.auth();
 

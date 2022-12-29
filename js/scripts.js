@@ -79,7 +79,7 @@ document.getElementById("send-btn").addEventListener("click", function() {
     let d = new Date()
   
     // Save the message to the Firebase Realtime Database
-    db.child("messages").push({
+    db.push({
       message: message,
       senderID: userdb.uid,
       email: userdb.email,
@@ -90,15 +90,15 @@ document.getElementById("send-btn").addEventListener("click", function() {
     document.getElementById("message-input").value = "";
 });
 
-db.child("messages").on("child_added", function(snapshot) {
+db.on("child_added", function(snapshot) {
     createMsg(snapshot)
     scrollTo(0, document.body.scrollHeight);
 });
-db.child("messages").on("child_removed", function(snapshot) {
+db.on("child_removed", function(snapshot) {
     createMsg(snapshot)
     scrollTo(0, document.body.scrollHeight);
 });
-db.child("messages").on("child_changed", function(snapshot) {
+db.on("child_changed", function(snapshot) {
     createMsg(snapshot)
     scrollTo(0, document.body.scrollHeight);
 });
