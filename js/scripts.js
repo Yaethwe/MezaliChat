@@ -76,18 +76,20 @@ document.getElementById("message-input").addEventListener("keypress", function(e
 document.getElementById("send-btn").addEventListener("click", function() {
     // Get the message from the input field
     const message = document.getElementById("message-input").value;
-    let d = new Date()
-  
-    // Save the message to the Firebase Realtime Database
-    db.push({
-      message: message,
-      senderID: userdb.uid,
-      email: userdb.email,
-      time: `${d.getFullYear()}:${d.getMonth()+1}:${d.getDate()}:${d.getHours()-12}:${d.getMinutes()} ${amPm(d.getHours())}`
-    });
-  
-    // Clear the input field
-    document.getElementById("message-input").value = "";
+    if(message){
+        let d = new Date()
+    
+        // Save the message to the Firebase Realtime Database
+        db.push({
+        message: message,
+        senderID: userdb.uid,
+        email: userdb.email,
+        time: `${d.getFullYear()}:${d.getMonth()+1}:${d.getDate()}:${d.getHours()-12}:${d.getMinutes()} ${amPm(d.getHours())}`
+        });
+    
+        // Clear the input field
+        document.getElementById("message-input").value = "";
+    }
 });
 
 db.on("child_added", function(snapshot) {
