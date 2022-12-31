@@ -84,3 +84,11 @@ function amPm(h) {
         return "AM"
     }
 }
+
+function hourGet(h){
+    if(h<=12){
+        return h
+    }else{
+        return h-12
+    }
+}

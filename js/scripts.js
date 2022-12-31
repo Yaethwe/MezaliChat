@@ -84,7 +84,7 @@ document.getElementById("send-btn").addEventListener("click", function() {
         message: message,
         senderID: userdb.uid,
         email: userdb.email,
-        time: `${d.getFullYear()}:${d.getMonth()+1}:${d.getDate()}:${d.getHours()-12}:${d.getMinutes()} ${amPm(d.getHours())}`
+        time: `${d.getFullYear()}:${d.getMonth()+1}:${d.getDate()}:${hourGet(d.getHours())}:${d.getMinutes()} ${amPm(d.getHours())}`
         });
     
         // Clear the input field
