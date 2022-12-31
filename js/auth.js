@@ -11,8 +11,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-const date1 = new Date()
-const db = firebase.database().ref(`messages/${date1.getFullYear()}/${date1.getMonth()+1}/${date1.getDate()}`);
+const queryString = window.location.search;
+const date1 = new Date();
+let db = firebase.database().ref(`messages/${date1.getFullYear()}/${date1.getMonth()+1}/${date1.getDate()}`);
+const urlParams = new URLSearchParams(queryString);
+if(urlParams.get('date')){
+    db = firebase.database().ref(`messages/${atob(urlParams.get('date'))}`)
+}
 
 const au = firebase.auth();
 
@@ -79,23 +84,3 @@ function amPm(h) {
         return "AM"
     }
 }
-
-
-
-
-
-
-
-
-
-
-let turn = false;
-$('.navbar-toggler').click(()=>{
-    if(turn){
-        $('.navbarHeader').hide()
-        turn = false
-    }else{
-        $('.navbarHeader').show()
-        turn = true
-    }
-})

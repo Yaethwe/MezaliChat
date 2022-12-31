@@ -33,3 +33,9 @@ body{
     font-family: sans-serif;
     min-width:100vw;
 }
+
+.bg-aliceblue{
+    background-color: aliceblue;
+    margin: 10px;
+    border-radius: 10px;
+}

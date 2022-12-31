@@ -136,5 +136,9 @@ function createMsg(snapshot){
     div.appendChild(messageElement)
     div.appendChild(content)
     // Add the message to the chat window
-    document.getElementById("chat-div").appendChild(div);
+    document.getElementById("msg-container").appendChild(div);
 }
+
+$('#date-input').change(d=>{
+    location.href=`?date=${btoa($('#date-input').val().replace('-','/').replace('-','/'))}`
+})
