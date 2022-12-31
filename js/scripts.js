@@ -131,6 +131,12 @@ function createMsg(snapshot){
             </div>
             <input type="text" value="${d.time}" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" readonly>
         </div>
+        <div class="input-group input-group-sm mb-3">
+            <a class="input-group-prepend" onclick="likeTo('${snapshot.getRef().getKey()}')">
+                <img src="img/like.svg" width="20px">
+            </a>
+            <input type="text" value="${countVotes(d.votes).likes}" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" readonly>
+        </div>
     </div>
     `
     div.appendChild(messageElement)
@@ -142,3 +148,27 @@ function createMsg(snapshot){
 $('#date-input').change(d=>{
     location.href=`?date=${btoa($('#date-input').val().replace('-','/').replace('-','/'))}`
 })
+
+$('#pwd-login').keypress(e=>{
+    if(e.key=="Enter"){
+        $('#login-btn').click()
+    }
+})
+
+function likeTo(msgID){
+    db.child(msgID).child('votes').child(btoa(userdb.email)).update({
+        type: 'like'
+    })
+}
+
+function countVotes(data){
+    let like = 0;
+    for (i in data) {
+        if(data[i].type=="like"){
+            like += 1;
+        }
+    }
+    return {
+        likes: like,
+    }
+}
